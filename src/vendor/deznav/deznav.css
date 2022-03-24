@@ -3140,7 +3140,6 @@ svg.pulse-svg {
   padding-left: 9.375rem; }
 
 [data-header-position="fixed"] .header {
-  background-color: pink;
   position: fixed;
   top: 0;
   width: 100%; }

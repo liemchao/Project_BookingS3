@@ -7,8 +7,8 @@ const Footer = () => {
       <div className="copyright">
         <p>
           Copyright © Designed &amp; Developed by{" "}
-          <a href="https://www.facebook.com/siliem3k" target="_blank" rel="noreferrer">
-            LiemTroller
+          <a href="http://dexignzone.com/" target="_blank" rel="noreferrer">
+            DexignZone
           </a>{" "}
           {d.getFullYear()}
         </p>

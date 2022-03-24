@@ -2,11 +2,11 @@
 import Metismenu from "metismenujs";
 import React, { Component, useContext, useEffect } from "react";
 /// Scroll
+import PerfectScrollbar from "react-perfect-scrollbar";
 /// Link
 import { Link } from "react-router-dom";
 import useScrollPosition from "use-scroll-position";
 import { ThemeContext } from "../../../context/ThemeContext";
-import PerfectScrollbar from "react-perfect-scrollbar";
 
 /// Image
 //import profile from "../../../images/profile/pic1.jpg";
@@ -61,37 +61,110 @@ const SideBar = () => {
   /// Active menu
   let deshBoard = [
       "",
-      // "dashboard-dark",
-      // "customer-list",
-      // "customer-detail",
+      "dashboard-dark",
+      "guest-list",
+      "guest-detail",
+      "concierge",
+      "room-list",
       "reviews",
       "task",
     ],
-    // email = ["email-compose", "email-inbox", "email-read"],
+    app = [
+      "app-profile",
+      "post-details",
+      "app-calender",
+      "email-compose",
+      "email-inbox",
+      "email-read",
+      "ecom-product-grid",
+      "ecom-product-list",
+      "ecom-product-order",
+      "ecom-checkout",
+      "ecom-invoice",
+      "ecom-customers",
+      "post-details",
+      "ecom-product-detail",
+    ],
+    email = ["email-compose", "email-inbox", "email-read"],
     shop = [
-      "form-create",
-      "spa-list",
-      "customer-list",
-      "service-table",
+      "ecom-product-grid",
+      "ecom-product-list",
+      "ecom-product-list",
+      "ecom-product-order",
+      "ecom-checkout",
+      "ecom-invoice",
+      "ecom-customers",
+      "ecom-product-detail",
     ],
     charts = [
-      "service-detail",
-      "service-list",
+      "chart-rechart",
+      "chart-flot",
+      "chart-chartjs",
+      "chart-chartist",
+      "chart-sparkline",
+      "chart-apexchart",
     ],
     bootstrap = [
-      "customer-table",
-      "customer-detail",
-    
+      "ui-accordion",
+      "ui-badge",
+      "ui-alert",
+      "ui-button",
+      "ui-modal",
+      "ui-button-group",
+      "ui-list-group",
+      "ui-media-object",
+      "ui-card",
+      "ui-carousel",
+      "ui-dropdown",
+      "ui-popover",
+      "ui-progressbar",
+      "ui-tab",
+      "ui-typography",
+      "ui-pagination",
+      "ui-grid",
     ],
     plugins = [
-      "payment-table",
-      "account-spa",
-      "account-user",
-      
+      "uc-select2",
+      "uc-nestable",
+      "uc-sweetalert",
+      "uc-toastr",
+      "uc-noui-slider",
+      "map-jqvmap",
+      "uc-lightgallery",
+    ],
+	redux = [
+       "redux-form",
+	   "redux-wizard",    
+       "todo",
+    ],
+    widget = ["widget-basic"],
+    forms = [
+      "form-element",
+      "form-wizard",
+      "form-editor-summernote",
+      "form-pickers",
+      "form-validation-jquery",
+    ],
+    table = ["table-bootstrap-basic", "table-datatable-basic"],
+    pages = [
+      "page-register",
+      "page-login",
+      "page-lock-screen",
+      "page-error-400",
+      "page-error-403",
+      "page-error-404",
+      "page-error-500",
+      "page-error-503",
+    ],
+    error = [
+      "page-error-400",
+      "page-error-403",
+      "page-error-404",
+      "page-error-500",
+      "page-error-503",
     ];
-
   return (
-    <PerfectScrollbar 
+    <div
       className={`deznav ${iconHover} ${
         sidebarposition.value === "fixed" &&
         sidebarLayout.value === "horizontal" &&
@@ -102,35 +175,36 @@ const SideBar = () => {
           : ""
       }`}
     >
-      <div className="deznav-scroll">
+      <PerfectScrollbar className="deznav-scroll">
         <MM className="metismenu" id="menu">
           <li className={`${deshBoard.includes(path) ? "mm-active" : ""}`}>
             <Link className="has-arrow ai-icon" to="#" >
               <i className="flaticon-025-dashboard"></i>
-              <span className="nav-text">Home</span>
+              <span className="nav-text">Dashboard</span>
             </Link>
-      
-              {/* <li><Link className={`${path === "" ? "mm-active" : "dashboard"}`} to="/dashboard"> Dashboard Light</Link></li>
+            <ul >
+              <li><Link className={`${path === "" ? "mm-active" : "dashboard"}`} to="/dashboard"> Dashboard Light</Link></li>
 				<li>
 					<Link className={`${path === "dashboard-dark" ? "mm-active" : ""}`} to="/dashboard-dark"> 
 						Dashboard Dark
 					</Link>
-				</li> */}
+				</li>
 				
-				{/* <li><Link className={`${path === "customer-list" ? "mm-active" : ""}`} to="/customer-list">Guest</Link></li>
-				<li><Link className={`${path === "customer-detail" ? "mm-active" : ""}`} to="/customer-detail">Guest Detail</Link></li> */}
-				{/* <li><Link className={`${path === "room-list" ? "mm-active" : ""}`} to="/room-list">Room</Link></li> */}
-				{/* <li><Link className={`${path === "reviews" ? "mm-active" : ""}`} to="/reviews">Reviews</Link></li> */}
+				<li><Link className={`${path === "guest-list" ? "mm-active" : ""}`} to="/guest-list">Guest</Link></li>
+				<li><Link className={`${path === "guest-detail" ? "mm-active" : ""}`} to="/guest-detail">Guest Detail</Link></li>
+				<li><Link className={`${path === "concierge" ? "mm-active" : ""}`} to="/concierge">Concierge</Link></li>
+				<li><Link className={`${path === "room-list" ? "mm-active" : ""}`} to="/room-list">Room</Link></li>
+				<li><Link className={`${path === "reviews" ? "mm-active" : ""}`} to="/reviews">Reviews</Link></li>
+				<li><Link className={`${path === "task" ? "mm-active" : ""}`} to="/task">Task</Link></li>
+            </ul>
           </li>
-          <li className={`${plugins.includes(path) ? "mm-active" : ""}`}>
+          <li className={`${app.includes(path) ? "mm-active" : ""}`}>
             <Link className="has-arrow ai-icon" to="#" >
               <i className="flaticon-050-info"></i>
-              <span className="nav-text">Acount</span>
+              <span className="nav-text">Apps</span>
             </Link>
-                 <li><Link className={`${path === "plugins" ? "mm-active" : ""}`} to="/account-spa">Account Spa Ower</Link></li>
-                 <li><Link className={`${path === "plugins" ? "mm-active" : ""}`} to="/account-user">Account User</Link></li>
-        
-              {/* <li><Link className={`${path === "app-profile" ? "mm-active" : ""}`} to="/app-profile"></Link></li>
+            <ul >
+              <li><Link className={`${path === "app-profile" ? "mm-active" : ""}`} to="/app-profile">Profile</Link></li>
               <li><Link className={`${path === "post-details" ? "mm-active" : ""}`} to="/post-details">Post Details</Link></li>
               <li className={`${email.includes(path) ? "mm-active" : ""}`}><Link className="has-arrow" to="#" >Email</Link>
                 <ul  className={`${email.includes(path) ? "mm-show" : ""}`}>
@@ -139,36 +213,32 @@ const SideBar = () => {
                   <li><Link className={`${path === "email-read" ? "mm-active" : ""}`} to="/email-read">Read</Link></li>
                 </ul>
               </li>
-              <li><Link className={`${path === "app-calender" ? "mm-active" : ""}`}to="/app-calender">Calendar</Link></li> */}
-         
-                <li className={`${plugins.includes(path) ? "mm-show" : ""}`}>
-                {/* <li><Link className={`${path === "payment-table" ? "mm-active" : ""}`} to="/payment">Payment</Link></li> */}
-              
-                 {/* <li><Link className={`${path === "uc-select2" ? "mm-active" : ""}`} to="/checkout-table">Checkout</Link></li>
-                 <li><Link className={`${path === "uc-noui-slider" ? "mm-active" : ""}`} to="/order-table">Book Detail</Link></li> */}
-                  {/* <li><Link className={`${ path === "service-list" ? "mm-active" : ""}`} to="/service-list">Service List</Link></li>
-                  <li><Link className={`${ path === "service-detail" ? "mm-active" : "" }`} to="/service-detail">Service Details</Link></li> */}
-                  {/* <li><Link className={`${ path === "ecom-product-order" ? "mm-active" : "" }`} to="/ecom-product-order">Order</Link></li>
+              <li><Link className={`${path === "app-calender" ? "mm-active" : ""}`}to="/app-calender">Calendar</Link></li>
+              <li className={`${shop.includes(path) ? "mm-active" : ""}`}><Link className="has-arrow" to="#" >Shop</Link>
+                <ul  className={`${shop.includes(path) ? "mm-show" : ""}`}>
+                  <li><Link className={`${ path === "ecom-product-grid" ? "mm-active" : ""}`} to="/ecom-product-grid">Product Grid</Link></li>
+                  <li><Link className={`${ path === "ecom-product-list" ? "mm-active" : ""}`} to="/ecom-product-list">Product List</Link></li>
+                  <li><Link className={`${ path === "ecom-product-detail" ? "mm-active" : "" }`} to="/ecom-product-detail">Product Details</Link></li>
+                  <li><Link className={`${ path === "ecom-product-order" ? "mm-active" : "" }`} to="/ecom-product-order">Order</Link></li>
                   <li><Link className={`${ path === "ecom-checkout" ? "mm-active" : ""}`} to="/ecom-checkout">Checkout</Link></li>
                   <li><Link className={`${ path === "ecom-invoice" ? "mm-active" : "" }`} to="/ecom-invoice">Invoice</Link></li>
-                  <li><Link className={`${ path === "ecom-customers" ? "mm-active" : "" }`} to="/ecom-customers">Customers</Link></li> */}
+                  <li><Link className={`${ path === "ecom-customers" ? "mm-active" : "" }`} to="/ecom-customers">Customers</Link></li>
+                </ul>
               </li>
+            </ul>
           </li>
-          <li className={`${shop.includes(path) ? "mm-active" : ""}`}>
+          <li className={`${charts.includes(path) ? "mm-active" : ""}`}>
             <Link className="has-arrow ai-icon" to="#" >
               <i className="flaticon-041-graph"></i>
-              <span className="nav-text">Spa</span>
+              <span className="nav-text">Charts</span>
             </Link>
-            <li><Link className={`${ path === "shop" ? "mm-active" : ""}`} to="/spa-list">Spa List</Link></li>
-            {/* <li><Link className={`${ path === "customer-list" ? "mm-active" : "" }`} to="/customer-list">Customer List</Link></li>
-            <li><Link className={`${ path === "service-table" ? "mm-active" : "" }`} to="/service-table">Sevice List</Link></li> */}
-    
-              {/* <li>
+            <ul >
+              <li>
                 <Link
                   className={`${path === "chart-rechart" ? "mm-active" : ""}`}
                   to="/chart-rechart"
                 >
-					             Service List
+					RechartJs
                 </Link>
               </li>
               <li>
@@ -176,10 +246,10 @@ const SideBar = () => {
                   className={`${path === "chart-chartjs" ? "mm-active" : ""}`}
                   to="/chart-chartjs"
                 >
-                      Service Detail
+                  Chartjs
                 </Link>
-              </li> */}
-              {/* <li>
+              </li>
+              <li>
                 <Link
                   className={`${path === "chart-chartist" ? "mm-active" : ""}`}
                   to="/chart-chartist"
@@ -202,27 +272,160 @@ const SideBar = () => {
                 >
                   Apexchart
                 </Link>
-              </li> */}
-        
+              </li>
+            </ul>
           </li>
-          {/* <li className={`${bootstrap.includes(path) ? "mm-active" : ""}`}>
+          <li className={`${bootstrap.includes(path) ? "mm-active" : ""}`}>
             <Link className="has-arrow ai-icon" to="#" >
               <i className="flaticon-086-star"></i>
-              <span className="nav-text">Customer</span>
+              <span className="nav-text">Bootstrap</span>
             </Link>
-         
-            <li><Link className={`${path === "customer-table" ? "mm-active" : ""}`} to="/customer-table">Customer Data</Link></li>
-			    	<li><Link className={`${path === "customer-detail" ? "mm-active" : ""}`} to="/customer-detail">Customer Detail</Link></li>
+            <ul >
+              <li>
+                <Link
+                  className={`${path === "ui-accordion" ? "mm-active" : ""}`}
+                  to="/ui-accordion"
+                >
+                  Accordion
+                </Link>
+              </li>
+              <li>
+                <Link
+                  className={`${path === "ui-alert" ? "mm-active" : ""}`}
+                  to="/ui-alert"
+                >
+                  Alert
+                </Link>
+              </li>
+              <li>
+                <Link
+                  className={`${path === "ui-badge" ? "mm-active" : ""}`}
+                  to="/ui-badge"
+                >
+                  Badge
+                </Link>
+              </li>
+              <li>
+                <Link
+                  className={`${path === "ui-button" ? "mm-active" : ""}`}
+                  to="/ui-button"
+                >
+                  Button
+                </Link>
+              </li>
+              <li>
+                <Link
+                  className={`${path === "ui-modal" ? "mm-active" : ""}`}
+                  to="/ui-modal"
+                >
+                  Modal
+                </Link>
+              </li>
+              <li>
+                <Link
+                  className={`${path === "ui-button-group" ? "mm-active" : ""}`}
+                  to="/ui-button-group"
+                >
+                  Button Group
+                </Link>
+              </li>
+              <li>
+                <Link
+                  className={`${path === "ui-list-group" ? "mm-active" : ""}`}
+                  to="/ui-list-group"
+                >
+                  List Group
+                </Link>
+              </li>
+              <li>
+                <Link
+                  className={`${path === "ui-card" ? "mm-active" : ""}`}
+                  to="/ui-card"
+                >
+                  Cards
+                </Link>
+              </li>
+              <li>
+                <Link
+                  className={`${path === "ui-carousel" ? "mm-active" : ""}`}
+                  to="/ui-carousel"
+                >
+                  Carousel
+                </Link>
+              </li>
+              <li>
+                <Link
+                  className={`${path === "ui-dropdown" ? "mm-active" : ""}`}
+                  to="/ui-dropdown"
+                >
+                  Dropdown
+                </Link>
+              </li>
+              <li>
+                <Link
+                  className={`${path === "ui-popover" ? "mm-active" : ""}`}
+                  to="/ui-popover"
+                >
+                  Popover
+                </Link>
+              </li>
+              <li>
+                <Link
+                  className={`${path === "ui-progressbar" ? "mm-active" : ""}`}
+                  to="/ui-progressbar"
+                >
+                  Progressbar
+                </Link>
+              </li>
+              <li>
+                <Link
+                  className={`${path === "ui-tab" ? "mm-active" : ""}`}
+                  to="/ui-tab"
+                >
+                  Tab
+                </Link>
+              </li>
+              <li>
+                <Link
+                  className={`${path === "ui-typography" ? "mm-active" : ""}`}
+                  to="/ui-typography"
+                >
+                  Typography
+                </Link>
+              </li>
+              <li>
+                <Link
+                  className={`${path === "ui-pagination" ? "mm-active" : ""}`}
+                  to="/ui-pagination"
+                >
+                  Pagination
+                </Link>
+              </li>
+              <li>
+                <Link
+                  className={`${path === "ui-grid" ? "mm-active" : ""}`}
+                  to="/ui-grid"
+                >
+                  Grid
+                </Link>
+              </li>
+            </ul>
           </li>
-          <li className={`${charts.includes(path) ? "mm-active" : ""}`}>
-            <Link className="has-arrow ai-icon" to="#" >
-              <i className="flaticon-045-heart"></i>
-              <span className="nav-text">Service</span>
-            </Link>
-            <li><Link className={`${ path === "service-list" ? "mm-active" : ""}`} to="/service-list">Service Data</Link></li>
-            <li><Link className={`${ path === "service-detail" ? "mm-active" : "" }`} to="/service-detail">Service Details</Link></li>
-            </li> */}
-			{/* <li className={`${redux.includes(path) ? "mm-active" : ""}`}>
+			<li className={`${plugins.includes(path) ? "mm-active" : ""}`}>
+				<Link className="has-arrow ai-icon" to="#" >
+					<i className="flaticon-045-heart"></i><span className="nav-text">Plugins</span>
+				</Link>
+				<ul >
+				  <li><Link className={`${path === "uc-select2" ? "mm-active" : ""}`} to="/uc-select2">Select 2</Link></li>
+				  <li><Link className={`${path === "uc-nestable" ? "mm-active" : ""}`} to="/uc-nestable">Nestedable</Link></li>
+				  <li><Link className={`${path === "uc-noui-slider" ? "mm-active" : ""}`} to="/uc-noui-slider">Noui Slider</Link></li>
+				  <li><Link className={`${path === "uc-sweetalert" ? "mm-active" : ""}`} to="/uc-sweetalert">Sweet Alert</Link></li>
+				  <li><Link className={`${path === "uc-toastr" ? "mm-active" : ""}`} to="/uc-toastr">Toastr</Link></li>
+				  <li><Link className={`${path === "map-jqvmap" ? "mm-active" : ""}`} to="/map-jqvmap">Jqv Map</Link></li>
+				  <li><Link className={`${path === "uc-lightgallery" ? "mm-active" : ""}`} to="/uc-lightgallery">Light Gallery</Link></li>
+				</ul>
+			</li>
+			<li className={`${redux.includes(path) ? "mm-active" : ""}`}>
                     <Link className="has-arrow ai-icon" to="#" >
                         <i className="flaticon-087-stop"></i><span className="nav-text">Redux</span>
                     </Link>
@@ -330,14 +533,14 @@ const SideBar = () => {
               </li>
               
             </ul>
-          </li> */}
+          </li>
         </MM>
 		<div className="copyright">
-			<p><strong>BookingS3 Admin</strong> © 2022 All Rights Reserved</p>
-			<p className="fs-12">Made with <span className="heart"></span> by LiemTroller</p>
+			<p><strong>Innap Hotel Admin</strong> © 2021 All Rights Reserved</p>
+			<p className="fs-12">Made with <span className="heart"></span> by DexignZone</p>
 		</div>
-      </div>
-    </PerfectScrollbar>
+      </PerfectScrollbar>
+    </div>
   );
 };
 

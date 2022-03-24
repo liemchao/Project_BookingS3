@@ -30,7 +30,7 @@ const Markup = () => {
   const { menuToggle } = useContext(ThemeContext);
   const routes = [
     /// Dashboard
-    { url: "", component: Home },
+    { url: "dashboard", component: Home },
     { url: "blank", component: Home },
    
     /// pages

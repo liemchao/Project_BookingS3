@@ -7,7 +7,11 @@ import {  Switch, Route } from "react-router-dom";
 import "./index.css";
 import "./chart.css";
 import "./step.css";
-
+//
+import AccountUser from "./components/Dashboard/Table/accountData";
+import AccountSpa from "./components/Dashboard/Table/accountSpa";
+import SpaTable from"./components/Dashboard/Spa/Spatable";
+import SpadDetal from "./components/Dashboard/Table/spaDetail";
 /// Layout
 import Nav from "./layouts/nav";
 import Footer from "./layouts/Footer";
@@ -19,6 +23,8 @@ import Error404 from "./pages/Error404";
 
 import Setting from "./layouts/Setting";
 import { ThemeContext } from "../context/ThemeContext";
+//
+
 
 const Markup = () => {
   const { menuToggle } = useContext(ThemeContext);
@@ -28,8 +34,11 @@ const Markup = () => {
     { url: "blank", component: Home },
    
     /// pages
-    
+    {url:"spa-list", component: SpaTable},
     { url: "page-error-404", component: Error404 },
+    { url:"account-spa", component: AccountSpa},
+    { url:"account-user", component: AccountUser},
+    {url:"spa-detail", component:SpadDetal},
   ];
   let path = window.location.pathname;
   path = path.split("/");

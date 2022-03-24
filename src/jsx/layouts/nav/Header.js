@@ -1,16 +1,44 @@
-import React from "react";
+import React, {  useState } from "react";
 
 import { Link } from "react-router-dom";
 /// Scroll
 import PerfectScrollbar from "react-perfect-scrollbar";
-
+import {	
+	onAuthStateChanged,
+  } from "firebase/auth";
 /// Image
 import profile from "../../../images/avatar/pic1.jpg";
 import avatar from "../../../images/avatar/1.jpg";
 import { Dropdown } from "react-bootstrap";
 import LogoutPage from './Logout';
+import { auth } from "../../../store/actions/Firebase";
+import { onMessageListener } from "../../../store/actions/Firebase_mess";
+import Notifications from "../../components/Dashboard/Notifications/Notifications";
+import ReactNotificationComponent from "../../components/Dashboard/Notifications/ReactNotification";
+
 
 const Header = ({ onNote }) => {
+	const [show, setShow] = useState(false);
+	const [notification, setNotification] = useState({ title: "", body: "" });
+  
+	console.log(show, notification);
+  
+	onMessageListener()
+	  .then((payload) => {
+		setShow(true);
+		setNotification({
+		  title: payload.notification.title,
+		  body: payload.notification.body,
+		});
+		console.log(payload);
+	  })
+	  .catch((err) => console.log("failed: ", err));
+const [user, setUser] = useState({});
+// load token
+onAuthStateChanged(auth, (currentUser) => {
+    setUser(currentUser);
+  });
+ 
   var path = window.location.pathname.split("/");
   var name = path[path.length - 1].split("-");
   var filterName = name.length >= 3 ? name.filter((n, i) => i > 0) : name;
@@ -169,7 +197,18 @@ const Header = ({ onNote }) => {
 					<Dropdown.Menu align="right" className="mt-4 dropdown-menu dropdown-menu-end">
 					  <PerfectScrollbar className="widget-timeline dz-scroll style-1 ps p-3 height370">
 						<ul className="timeline">
+						{show ? (
+        <ReactNotificationComponent
+          title={notification.title}
+          body={notification.body}
+        />
+      ) : (
+        <></>
+      )}
+      <Notifications />
+	  
 						  <li>
+
 							<div className="timeline-badge primary" />
 							<Link
 							  className="timeline-panel c-pointer text-muted"
@@ -247,7 +286,7 @@ const Header = ({ onNote }) => {
 					<Dropdown.Toggle variant="" as="a" className="nav-link i-false c-pointer">
 						<img src={profile} width={20} alt="" />
 						<div className="header-info ms-3">
-							<span>John Doe</span>
+							<span> {user?.email}</span>
 							<small>Superadmin</small>
 						</div> 
 					</Dropdown.Toggle>

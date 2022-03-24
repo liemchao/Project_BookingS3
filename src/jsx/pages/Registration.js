@@ -5,16 +5,30 @@ import {
     loadingToggleAction,
     signupAction,
 } from '../../store/actions/AuthActions';
+import { createUserWithEmailAndPassword} from "firebase/auth";
+import { auth } from "../../store/actions/Firebase";
 // image
 //import logo from "../../images/logo-full.png";
 
 function Register(props) {
-    const [email, setEmail] = useState('');
+  const [email, setEmail] = useState("");
     let errorsObj = { email: '', password: '' };
     const [errors, setErrors] = useState(errorsObj);
-    const [password, setPassword] = useState('');
-
+    const [password, setPassword] = useState("");
+    
     const dispatch = useDispatch();
+    const register = async () => {
+      try {
+        const user = await createUserWithEmailAndPassword(
+          auth,
+          email,
+          password
+        );
+        console.log(user);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
 
     function onSignUp(e) {
         e.preventDefault();
@@ -90,6 +104,7 @@ function Register(props) {
 							onChange={(e) =>
 								setPassword(e.target.value)
 							}
+                           type="password"
                           className="form-control"
                           defaultValue="Password"
                         />
@@ -97,7 +112,7 @@ function Register(props) {
 					  {errors.password && <div>{errors.password}</div>}
                       <div className="text-center mt-4">
                         <button
-                          type="submit"
+                         onClick={register}
                           className="btn btn-primary btn-block"
                         >
                           Sign me up

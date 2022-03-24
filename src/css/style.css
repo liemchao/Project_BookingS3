@@ -9672,7 +9672,8 @@ svg.pulse-svg {
 [data-header-position="fixed"] .header {
   position: fixed;
   top: 0;
-  width: 100%; }
+  width: 100%;
+  background-color: pink; }
 [data-header-position="fixed"] .content-body {
   padding-top: 6.5rem; }
   @media only screen and (max-width: 87.5rem) {
@@ -10190,9 +10191,9 @@ svg.pulse-svg {
         font-weight: 500;
         display: inline-block;
         font-size: 1.125rem;
-        color: #BFBFBF; }
+        color: #000; }
         .deznav .metismenu > li > a i {
-          color: #BFBFBF; }
+          color: #000; }
         .deznav .metismenu > li > a svg {
           max-width: 1.5rem;
           max-height: 1.5rem;
@@ -10279,7 +10280,7 @@ svg.pulse-svg {
       display: block;
       padding: 0.625rem 1.875rem;
       outline-width: 0;
-      color: #BFBFBF;
+      color: #000;
       text-decoration: none; }
       @media only screen and (max-width: 47.9375rem) {
         .deznav .metismenu a {
@@ -10609,6 +10610,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 [data-sidebar-style="full"][data-layout="vertical"] .deznav .metismenu > li {
   padding: 0 2.1875rem; }
   [data-sidebar-style="full"][data-layout="vertical"] .deznav .metismenu > li > a {
+    color: black;
     font-size: 1.125rem;
     padding: 1.125rem 2.1875rem;
     border-radius: 1.375rem;
@@ -11839,9 +11841,12 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
   border-top-right-radius: 0; }
 [data-sidebar-position="fixed"][data-layout="vertical"] .deznav {
   position: fixed;
+  background-color: #FFDAB9;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0; }
   [data-sidebar-position="fixed"][data-layout="vertical"] .deznav .deznav-scroll {
+    background-color: #FFDAB9;
+
     border-top-left-radius: 0px;
     border-top-right-radius: 0px; }
 [data-sidebar-position="fixed"][data-layout="vertical"] .menu-toggle .deznav {

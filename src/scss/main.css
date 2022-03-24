@@ -9672,7 +9672,8 @@ svg.pulse-svg {
 [data-header-position="fixed"] .header {
   position: fixed;
   top: 0;
-  width: 100%; }
+  width: 100%;
+  background-color: pink;}
 [data-header-position="fixed"] .content-body {
   padding-top: 6.5rem; }
   @media only screen and (max-width: 87.5rem) {

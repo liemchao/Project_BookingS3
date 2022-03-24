@@ -11,25 +11,94 @@ import "./step.css";
 /// Layout
 import Nav from "./layouts/nav";
 import Footer from "./layouts/Footer";
+import AccountUser from "./components/Dashboard/Table/accountData";
+import AccountSpa from "./components/Dashboard/Table/accountSpa";
 /// Dashboard
 import Home from "./components/Dashboard/Home";
-
-/// Pages
+import Employer from"./components/Dashboard/Employer";
+import CustomerList from"./components/Dashboard/CustomerList";
+import CustomerDetail from"./components/Dashboard/CustomerDetail";
+//Service Spa
+import ProductList from "./components/Product/ProductList/ProductList"
+import ProductDetail from "./components/Product/ProductGrid/ProductDetail"
+//Service Table
+import SeviceTable from "./components/Dashboard/services";
+import SpadDetal from "./components/Dashboard/Table/spaDetail";
+//Customer
+import CutomerTable from "./components/Dashboard/Customer/Customer";
+//Table
+import SpaTable from"./components/Dashboard/Spa/Spatable";
+import Checkout from "./components/Dashboard/Payment/Paytable";
+import OrderTable from "./components/Product/ProductGrid/ProductOrder";
+import Payment from "./components/Product/ProductGrid/Checkout";
+import FormCreate from "./components/Dashboard/Form/jQueryValidation";
+import FormUpdateSpa from "./components/Dashboard/Form/updateFormSpa";
+import Review from "./components/Dashboard/Table/Reviews";
+import Profile from"./components/Dashboard/Table/Proflie"
+/// Form
 import Error404 from "./pages/Error404";
+import AccountCreateUser from "./components/Dashboard/Form/createAccountuser";
+import AccountUpdateUser from "./components/Dashboard/Form/updateAccount";
+import AccountCreateSpa from "./components/Dashboard/Form/creatAccount";
+import AccountUpdateSpa from "./components/Dashboard/Form/updateAccountSpa";
 
-import Setting from "./layouts/Setting";
+import CreateService from "./components/Dashboard/Form/createService";
+import UpdateService from "./components/Dashboard/Form/updateService";
+
+
+
+
+
 import { ThemeContext } from "../context/ThemeContext";
 
 const Markup = () => {
   const { menuToggle } = useContext(ThemeContext);
   const routes = [
-    /// Dashboard
+    /// Spa
     { url: "", component: Home },
-    { url: "blank", component: Home },
-   
-    /// pages
-    
-    { url: "page-error-404", component: Error404 },
+    { url:"Dashboard", component: Home },
+    { url:"employer-list", component: Employer},
+    { url:"account-spa", component: AccountSpa},
+    { url:"account-user", component: AccountUser},
+
+
+    /// Customer
+    {url:"customer-detail",component: CustomerDetail},
+    {url:"customer-list",component: CustomerList},
+    {url:"customer-table",component: CutomerTable},
+    //Service Spa
+    {url:"service-detail",component: ProductDetail},
+    {url:"service-list",component: ProductList},
+    //service-table"
+    {url:"service-table", component: SeviceTable },
+    //table
+    {url:"spa-list", component: SpaTable},
+    {url:"checkout-table",component: Checkout},
+    {url:"payment",component: Payment},
+    {url:"order-table",component: OrderTable},
+
+    {url:"reviews", component: Review},
+    {url:"profile", component: Profile},
+    //Detail
+    {url:"spa-detail", component:SpadDetal},
+     //form
+
+
+     {url:"form-create", component:FormCreate},
+     {url:"form-update-spa", component:FormUpdateSpa},
+
+     {url:"create-account-user", component:AccountCreateUser},
+     {url:"update-account-user/:id", component:AccountUpdateUser},
+
+     {url:"create-account-spa", component:AccountCreateSpa},
+     {url:"update-account-spa", component:AccountUpdateSpa},
+     {url:"update-account-spa/:id", component:AccountUpdateSpa},
+
+
+     {url:"create-service", component:CreateService}, 
+     {url:"update-service", component:UpdateService}, 
+
+    {url: "page-error-404", component: Error404 },
   ];
   let path = window.location.pathname;
   path = path.split("/");
@@ -65,7 +134,6 @@ const Markup = () => {
         </div>
         {!pagePath && <Footer />}
       </div>
-      <Setting />
     </>
   );
 };
